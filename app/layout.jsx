@@ -1,8 +1,14 @@
 import '@styles/globals.css';
 
+import NavComponent from '@components/NavComponent';
+import ProviderComponent from '@components/ProviderComponent';
+
 export const metadata = {
     title: 'Neo Mokhele | Promptopia',
     description: 'Discover & Share AI Prompts',
+    icons: {
+        icon: "/assets/images/logo.svg"
+    }
 }
 
 const RootLayout = ({ children }) => {
@@ -14,6 +20,7 @@ const RootLayout = ({ children }) => {
                 </div>
 
                 <main className='app'>
+                    <NavComponent />
                     {children}
                 </main>
             </body>
