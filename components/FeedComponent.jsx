@@ -6,7 +6,7 @@ import PromptCardListComponent from "./PromptCardListComponent";
 
 const FeedComponent = () => {
   const [searchText, setSearchText] = useState("");
-  const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const FeedComponent = () => {
 
       const data = await response.json();
 
-      setPost(data);
+      setPosts(data);
     };
 
     fetchPost();
@@ -37,7 +37,7 @@ const FeedComponent = () => {
         />
       </form>
 
-      <PromptCardListComponent data={[post]} handleTagClick={() => {}} />
+      <PromptCardListComponent data={posts} handleTagClick={() => {}} />
     </section>
   );
 };
