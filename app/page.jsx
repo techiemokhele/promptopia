@@ -6,7 +6,7 @@ const HomePage = () => {
       <h1 className="head_text text-center">
         Find & Disseminate
         <br className="max-md:hidden" />
-        <span className="orange_gradient text-center">AI-Powered Ideas</span>
+        <span className="orange_gradient text-center"> AI-Powered Ideas</span>
       </h1>
       <p className="desc text-center">
         An open-source AI prompting application called Promptopia helps people
