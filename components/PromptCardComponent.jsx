@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const PromptCardComponent = ({
   post,
@@ -12,7 +12,6 @@ const PromptCardComponent = ({
   handleDelete,
 }) => {
   const { data: session } = useSession();
-  const router = useRouter();
   const pathName = usePathname();
 
   const [copied, setCopied] = useState("");

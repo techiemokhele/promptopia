@@ -1,4 +1,4 @@
-import FeedComponent from "@components/FeedComponent";
+import FeedComponent from "../components/FeedComponent";
 
 const HomePage = () => {
   return (
