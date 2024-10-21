@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import FormComponent from "@components/FormComponent";
+import FormComponent from "../../components/FormComponent";
 
 const UpdatePromptPage = () => {
   const router = useRouter();

@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-import ProfileComponent from "@components/ProfileComponent";
+import ProfileComponent from "../../components/ProfileComponent";
 
 const ProfilePage = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  const [posts, setPosts] = useState([]);
+  const [myPosts, setMyPosts] = useState([]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -18,7 +18,7 @@ const ProfilePage = () => {
 
       const data = await response.json();
 
-      setPosts(data);
+      setMyPosts(data);
     };
 
     if (session?.user.id) fetchPost();
@@ -39,9 +39,9 @@ const ProfilePage = () => {
           method: "DELETE",
         });
 
-        const filteredPosts = posts.filter((p) => p._id !== post._id);
+        const filteredPosts = myPosts.filter((p) => p._id !== post._id);
 
-        setPosts(filteredPosts);
+        setMyPosts(filteredPosts);
       } catch (error) {
         console.log(error);
       }
@@ -52,7 +52,7 @@ const ProfilePage = () => {
     <ProfileComponent
       name="My"
       desc="Welcome to your personalised profile page. Share your great prompts and use your ideas to inspire others."
-      data={posts}
+      data={myPosts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
