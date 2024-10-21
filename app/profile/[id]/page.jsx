@@ -9,14 +9,14 @@ const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
   const userName = searchParams.get("name");
 
-  const [userPosts, setUserPosts] = useState([]);
+  const [userPost, setUserPost] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${params?.id}/posts`);
       const data = await response.json();
 
-      setUserPosts(data);
+      setUserPost(data);
     };
 
     if (params?.id) fetchPosts();
@@ -26,7 +26,7 @@ const UserProfile = ({ params }) => {
     <ProfileComponent
       name={userName}
       desc={`Welcome to ${userName}'s personalised profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
-      data={userPosts}
+      data={userPost}
     />
   );
 };
