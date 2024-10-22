@@ -2,6 +2,7 @@ import "../styles/globals.css";
 
 import NavComponent from "../components/NavComponent";
 import Provider from "../components/Provider";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Neo Mokhele | Promptopia",
@@ -20,10 +21,12 @@ const RootLayout = ({ children }) => {
             <div className="gradient" />
           </div>
 
-          <main className="app">
-            <NavComponent />
-            {children}
-          </main>
+          <Suspense fallback={<div>Loading...</div>}>
+            <main className="app">
+              <NavComponent />
+              {children}
+            </main>
+          </Suspense>
         </Provider>
       </body>
     </html>
