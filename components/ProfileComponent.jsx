@@ -16,7 +16,7 @@ const ProfileComponent = ({ name, desc, data, handleEdit, handleDelete }) => {
             handleEdit={() => handleEdit && handleEdit(post)}
             handleDelete={() => handleDelete && handleDelete(post)}
           />
-        ))}
+        )).reverse()}
       </div>
     </section>
   );

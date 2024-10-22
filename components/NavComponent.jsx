@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const NavComponent = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -19,8 +21,13 @@ const NavComponent = () => {
     setUpProviders();
   }, []);
 
+  const handleSignOut = () => {
+    signOut();
+    router.push("/");
+  };
+
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
+    <nav className="flex-between w-full mb-16 pt-3 sticky">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"
@@ -40,7 +47,11 @@ const NavComponent = () => {
               Create Post
             </Link>
 
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="outline_btn"
+            >
               Sign Out
             </button>
 
@@ -61,15 +72,21 @@ const NavComponent = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
+              Object.values(providers).map((provider, i) => (
+                <div key={i} className="flex flex-row gap-4 items-center">
+                  <Link href="/create-prompt" className="black_btn">
+                    Create Post
+                  </Link>
+
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className="black_btn"
+                  >
+                    Sign In
+                  </button>
+                </div>
               ))}
           </>
         )}
@@ -115,7 +132,7 @@ const NavComponent = () => {
                   className="mt-5 w-full black_btn"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    handleSignOut();
                   }}
                 >
                   Sign Out
@@ -126,15 +143,21 @@ const NavComponent = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
+              Object.values(providers).map((provider, i) => (
+                <div key={i} className="flex flex-row gap-4 items-center">
+                  <Link href="/create-prompt" className="black_btn">
+                    Create Post
+                  </Link>
+
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className="black_btn"
+                  >
+                    Sign In
+                  </button>
+                </div>
               ))}
           </>
         )}
