@@ -67,4 +67,7 @@ const UpdatePromptPage = () => {
   );
 };
 
+// Disable static generation and force dynamic rendering
+export const dynamic = "force-dynamic";
+
 export default UpdatePromptPage;
