@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import LoadingComponent from "../../components/LoadingComponent"
 
 const Loading = () => {

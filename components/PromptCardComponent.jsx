@@ -18,8 +18,6 @@ const PromptCardComponent = ({
   const [copied, setCopied] = useState("");
 
   const handleProfileClick = () => {
-    console.log(post);
-
     if (post.creator._id === session?.user.id) return router.push("/profile");
 
     router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
@@ -31,9 +29,15 @@ const PromptCardComponent = ({
     setTimeout(() => setCopied(false), 3000);
   };
 
-  const userImage = post.creator?.image ? post.creator?.image : "assets/images/user-circle.svg";
-  const userName = post.creator?.username ? post.creator?.username : "Guest User"
-  const email = post.creator?.email ? post.creator?.email : "example@company.com"
+  const userImage = post.creator?.image
+    ? post.creator?.image
+    : "assets/images/user-circle.svg";
+  const userName = post.creator?.username
+    ? post.creator?.username
+    : "Guest User";
+  const email = post.creator?.email
+    ? post.creator?.email
+    : "example@company.com";
 
   return (
     <div className="prompt_card">
@@ -54,9 +58,7 @@ const PromptCardComponent = ({
             <h3 className="font-satoshi font-semibold text-gray-900">
               {userName}
             </h3>
-            <p className="font-inter text-sm text-gray-500">
-              {email}
-            </p>
+            <p className="font-inter text-sm text-gray-500">{email}</p>
           </div>
         </div>
 

@@ -9,7 +9,7 @@ const PromptCardListComponent = ({ data, handleTagClick }) => {
           post={post}
           handleTagClick={handleTagClick}
         />
-      )).reverse()}
+      ))}
     </div>
   );
 };

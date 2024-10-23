@@ -7,6 +7,7 @@ import PromptCardListComponent from "./PromptCardListComponent";
 const FeedComponent = () => {
   const [allPosts, setAllPosts] = useState([]);
 
+  // Search states
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
@@ -23,7 +24,7 @@ const FeedComponent = () => {
   }, []);
 
   const filterPrompts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i");
+    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
       (item) =>
         regex.test(item.creator.username) ||
@@ -65,16 +66,14 @@ const FeedComponent = () => {
         />
       </form>
 
+      {/* All Prompts */}
       {searchText ? (
         <PromptCardListComponent
           data={searchedResults}
           handleTagClick={handleTagClick}
         />
       ) : (
-        <PromptCardListComponent
-          data={allPosts}
-          handleTagClick={handleTagClick}
-        />
+        <PromptCardListComponent data={allPosts} handleTagClick={handleTagClick} />
       )}
     </section>
   );
